@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>m_Drill</defName>
+    <label>deployable drill</label>
+    <description>Portable breaching drill used to penetrate reinforced vault doors. Loud, slow, and prone to jamming, but essential for high-value extractions.</description>
+	
+    <graphicData>
+      <texPath>Things/Items/m_drill</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <stackLimit>1</stackLimit>
+    <healthAffectsPrice>false</healthAffectsPrice>
+	
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <MarketValue>700</MarketValue>
+      <Mass>12</Mass>
+      <Flammability>0.2</Flammability>
+      <DeteriorationRate>1.0</DeteriorationRate>
+	  <WorkToMake>25000</WorkToMake>
+    </statBases>
+	
+	<thingCategories>
+      <li>ItemsMisc</li>
+    </thingCategories>
+    <intricate>true</intricate>
+	<tradeTags>
+      <li>ExoticMisc</li>
+    </tradeTags>
+	
+	<recipeMaker>
+      <recipeUsers Inherit="False">
+        <li>TableMachining</li>
+      </recipeUsers>
+      <researchPrerequisite>Machining</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+	
+    <costList>
+      <Steel>80</Steel>
+	  <ComponentIndustrial>5</ComponentIndustrial>
+    </costList>
+  </ThingDef>
+
+</Defs>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>Milkwater PAYDAY</name>
+	<author>Milkwater</author>
+	<description>Adds some payday guns to your game.</description>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+	<packageId>Milkwater.PAYDAY</packageId>
+</ModMetaData>

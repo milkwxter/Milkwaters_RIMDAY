@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+	<ThingDef ParentName="m_BaseRevolver">
+	  <defName>m_Bronco44_Revolver</defName>
+	  <label>Bronco .44</label>
+	  <description>Heavy-caliber revolver of midworld make, prized for its ability to punch through armor at the cost of slow reloads and limited capacity.</description>
+	  <graphicData>
+		<texPath>Things/Weapons/m_bronco44</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>1.1</drawSize>
+	  </graphicData>
+	  <equippedAngleOffset>0</equippedAngleOffset>
+
+	  <statBases>
+		<WorkToMake>4000</WorkToMake>
+		<Mass>1.5</Mass>
+		<Bulk>3</Bulk>
+		<SightsEfficiency>0.7</SightsEfficiency>
+		<ShotSpread>0.16</ShotSpread>
+		<SwayFactor>1.2</SwayFactor>
+		<RangedWeapon_Cooldown>0.57</RangedWeapon_Cooldown>
+	  </statBases>
+
+	  <costList>
+		<Steel>40</Steel>
+		<ComponentIndustrial>4</ComponentIndustrial>
+	  </costList>
+
+	  <verbs>
+		<li Class="CombatExtended.VerbPropertiesCE">
+		  <recoilAmount>3.7</recoilAmount>
+		  <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+		  <hasStandardCommand>true</hasStandardCommand>
+		  <defaultProjectile>Bullet_44Magnum_FMJ</defaultProjectile>
+		  <burstShotCount>1</burstShotCount>
+		  <warmupTime>0.6</warmupTime>
+		  <range>12</range>
+		  <soundCast>Milkwater_Shot_Bronco44</soundCast>
+		  <soundCastTail>GunTail_Heavy</soundCastTail>
+		  <muzzleFlashScale>11</muzzleFlashScale>
+		</li>
+	  </verbs>
+	  
+	  <comps>
+		<li Class="CombatExtended.CompProperties_AmmoUser">
+		  <magazineSize>6</magazineSize>
+		  <reloadOneAtATime>true</reloadOneAtATime>
+		  <reloadTime>0.85</reloadTime>
+		  <ammoSet>AmmoSet_44Magnum</ammoSet>
+		</li>
+		<li Class="CombatExtended.CompProperties_FireModes">
+		  <aiUseBurstMode>false</aiUseBurstMode>
+		  <aiAimMode>Snapshot</aiAimMode>
+		</li>
+	  </comps>
+	  <recipeMaker>
+		<researchPrerequisite>Gunsmithing</researchPrerequisite>
+		<skillRequirements>
+		  <Crafting>6</Crafting>
+		</skillRequirements>
+	  </recipeMaker>
+	  
+	  <modExtensions>
+		<li Class="CombatExtended.GunDrawExtension">
+		  <DrawSize>1.0,1.0</DrawSize>
+		  <DrawOffset>0.1,0.08</DrawOffset>
+		  <DropCasingWhenReload>true</DropCasingWhenReload>
+		  <AdvancedCasingVariables>true</AdvancedCasingVariables>
+		  <CasingRotationRandomRange>20</CasingRotationRandomRange>
+		  <CasingOffset>-0.1,0.05</CasingOffset>
+		  <CasingSpeedOverrideRange>1.5~2</CasingSpeedOverrideRange>
+		  <CasingAngleOffset>-135</CasingAngleOffset>
+		  <CasingLifeTimeMultiplier>2</CasingLifeTimeMultiplier>
+		</li>
+		<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="IssacZhuang.MuzzleFlash">
+		  <def>MF_StandardMuzzleFalshTwo</def>
+		  <drawSize>(1,1)</drawSize>
+		  <offsets><li>(0.42,0.2)</li></offsets>
+		</li>
+	  </modExtensions>
+	</ThingDef>
+
+  
+</Defs>

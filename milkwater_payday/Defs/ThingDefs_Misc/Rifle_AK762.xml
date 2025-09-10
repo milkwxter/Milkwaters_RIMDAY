@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+        
+  <!-- Gepard PDW -->
+  <ThingDef ParentName="m_BaseSMG">
+    <defName>m_AK762_AR</defName>
+    <label>AK.762</label>
+    <description>Durable 7.62mm battle rifle of midworld origin, valued by pirates and frontier militias for its raw power despite heavy recoil.</description>
+	<graphicData>
+      <texPath>Things/Weapons/m_ak762</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>1.2</drawSize>
+    </graphicData>
+	<equippedAngleOffset>0</equippedAngleOffset>
+	
+    <statBases>
+	  <WorkToMake>40000</WorkToMake>
+	  <SightsEfficiency>1</SightsEfficiency>
+	  <ShotSpread>0.09</ShotSpread>
+	  <SwayFactor>1.37</SwayFactor>
+	  <Bulk>9</Bulk>
+	  <Mass>2.5</Mass>
+	  <RangedWeapon_Cooldown>0.37</RangedWeapon_Cooldown>
+	</statBases>
+
+    <costList>
+      <Steel>60</Steel>
+      <ComponentIndustrial>7</ComponentIndustrial>
+    </costList>
+	
+    <verbs>
+	  <li Class="CombatExtended.VerbPropertiesCE">
+		<recoilAmount>1.9</recoilAmount>
+		<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+		<hasStandardCommand>true</hasStandardCommand>
+		<defaultProjectile>Bullet_762x39mmSoviet_FMJ</defaultProjectile>
+		<burstShotCount>3</burstShotCount>
+		<ticksBetweenBurstShots>9</ticksBetweenBurstShots>
+		<warmupTime>1.1</warmupTime>
+		<range>45</range>
+		<soundCast>Milkwater_Shot_AK762</soundCast>
+		<soundCastTail>GunTail_Heavy</soundCastTail>
+		<muzzleFlashScale>12</muzzleFlashScale>
+	  </li>
+	</verbs>
+	
+    <comps>
+      <li Class="CombatExtended.CompProperties_AmmoUser">
+        <magazineSize>30</magazineSize>
+        <reloadTime>4</reloadTime>
+        <ammoSet>AmmoSet_762x39mmSoviet</ammoSet>
+      </li>
+      <li Class="CombatExtended.CompProperties_FireModes">
+        <aiUseBurstMode>FALSE</aiUseBurstMode>
+        <aiAimMode>AimedShot</aiAimMode>
+        <aimedBurstShotCount>2</aimedBurstShotCount>
+      </li>
+    </comps>
+    <recipeMaker>
+      <researchPrerequisite>Gunsmithing</researchPrerequisite>
+	  <skillRequirements>
+	    <Crafting>6</Crafting>
+	  </skillRequirements>
+    </recipeMaker>
+    
+    <modExtensions>
+      <li Class="CombatExtended.GunDrawExtension">
+        <DrawSize>1.0,1.0</DrawSize>
+        <DrawOffset>0.1,0.0</DrawOffset>
+		<CasingOffset>-0.07,0.065</CasingOffset>
+		<CasingAngleOffset>0</CasingAngleOffset>
+      </li>
+	  <li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="IssacZhuang.MuzzleFlash">
+		<def>MF_StandardMuzzleFalshTwo</def>
+		<drawSize>(1,1)</drawSize>
+		<offsets>
+			<li>(0.65,0.11)</li>
+		</offsets>
+	  </li>
+    </modExtensions>
+  </ThingDef>
+  
+</Defs>

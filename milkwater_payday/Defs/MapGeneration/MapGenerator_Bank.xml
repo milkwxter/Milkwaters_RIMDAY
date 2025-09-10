@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <MapGeneratorDef ParentName="MapCommonBase">
+    <defName>m_MapGenerator_Bank</defName>
+    <genSteps>
+      <li>RocksFromGrid</li>
+      <li>m_Bank_GenStep</li>
+    </genSteps>
+  </MapGeneratorDef>
+  
+  <!-- Generate hospital -->
+  <GenStepDef>
+    <defName>m_Bank_GenStep</defName>
+    <order>400</order>
+    <genStep Class="RIMDAY.GenStep_SpawnMBankLayout"/>
+    <linkWithSite>m_Bank</linkWithSite>
+  </GenStepDef>
+  
+</Defs>

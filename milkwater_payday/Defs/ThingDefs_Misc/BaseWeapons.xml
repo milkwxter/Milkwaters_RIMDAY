@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+    <!-- Abstract pistol base -->
+	<ThingDef Name="m_BasePistol" ParentName="BaseHumanMakeableGun" Abstract="True">
+	
+	  <techLevel>Industrial</techLevel>
+	  
+	  <soundInteract>Interact_Autopistol</soundInteract>
+
+	  <weaponTags>
+		<li>CE_Sidearm</li>
+		<li>CE_OneHandedWeapon</li>
+	  </weaponTags>
+	  
+	  <tradeTags>
+		<li>WeaponRanged</li>
+	  </tradeTags>
+	  
+	  <tools>
+		<li Class="CombatExtended.ToolCE">
+			<label>grip</label>
+			<capacities>
+				<li>Blunt</li>
+			</capacities>
+			<power>2</power>
+			<cooldownTime>1.54</cooldownTime>
+			<chanceFactor>1.5</chanceFactor>
+			<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+			<linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+		</li>
+		<li Class="CombatExtended.ToolCE">
+			<label>muzzle</label>
+			<capacities>
+				<li>Poke</li>
+			</capacities>
+			<power>2</power>
+			<cooldownTime>1.54</cooldownTime>
+			<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+			<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+		</li>
+	  </tools>
+	</ThingDef>
+	
+	<!-- Abstract revolver base -->
+	<ThingDef Name="m_BaseRevolver" ParentName="m_BasePistol" Abstract="True">
+	
+	  <soundInteract>Interact_Revolver</soundInteract>
+	  
+	  <tools>
+		<li Class="CombatExtended.ToolCE">
+			<label>grip</label>
+			<capacities>
+				<li>Blunt</li>
+			</capacities>
+			<power>3</power>
+			<cooldownTime>1.54</cooldownTime>
+			<chanceFactor>1.5</chanceFactor>
+			<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+			<linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+		</li>
+		<li Class="CombatExtended.ToolCE">
+			<label>muzzle</label>
+			<capacities>
+				<li>Poke</li>
+			</capacities>
+			<power>3</power>
+			<cooldownTime>1.54</cooldownTime>
+			<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+			<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+		</li>
+	  </tools>
+	</ThingDef>
+	
+	<!-- Abstract SMG base -->
+	<ThingDef Name="m_BaseSMG" ParentName="BaseHumanMakeableGun" Abstract="True">
+	
+	  <techLevel>Industrial</techLevel>
+	  
+	  <soundInteract>Interact_SMG</soundInteract>
+
+	  <weaponTags>
+		<li>CE_SMG</li>
+	  </weaponTags>
+	  
+	  <tradeTags>
+		<li>WeaponRanged</li>
+	  </tradeTags>
+	  
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>stock</label>
+				<capacities>
+				  <li>Blunt</li>
+				</capacities>
+				<power>6</power>
+				<cooldownTime>1.55</cooldownTime>
+				<chanceFactor>1.5</chanceFactor>
+				<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+			</li>
+				<li Class="CombatExtended.ToolCE">
+				<label>barrel</label>
+				<capacities>
+				  <li>Blunt</li>
+				</capacities>
+				<power>4</power>
+				<cooldownTime>2.02</cooldownTime>
+				<armorPenetrationBlunt>1.630</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+			</li>
+				<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+				  <li>Poke</li>
+				</capacities>
+				<power>6</power>
+				<cooldownTime>1.55</cooldownTime>
+				<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+	</ThingDef>
+	
+	<!-- Abstract shotgun base -->
+	<ThingDef Name="m_BaseShotgun" ParentName="BaseHumanMakeableGun" Abstract="True">
+	
+	  <techLevel>Industrial</techLevel>
+	  
+	  <soundInteract>Interact_Shotgun</soundInteract>
+
+	  <weaponTags>
+		<li>CE_AI_BROOM</li>
+	  </weaponTags>
+	  
+	  <tradeTags>
+		<li>WeaponRanged</li>
+	  </tradeTags>
+	  
+	  <tools>
+		<li Class="CombatExtended.ToolCE">
+		  <label>stock</label>
+		  <capacities><li>Blunt</li></capacities>
+		  <power>8</power>
+		  <cooldownTime>1.55</cooldownTime>
+		  <chanceFactor>1.5</chanceFactor>
+		  <armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+		  <linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+		</li>
+		<li Class="CombatExtended.ToolCE">
+		  <label>barrel</label>
+		  <capacities><li>Blunt</li></capacities>
+		  <power>5</power>
+		  <cooldownTime>2.02</cooldownTime>
+		  <armorPenetrationBlunt>1.630</armorPenetrationBlunt>
+		  <linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+		</li>
+		<li Class="CombatExtended.ToolCE">
+		  <label>muzzle</label>
+		  <capacities><li>Poke</li></capacities>
+		  <power>8</power>
+		  <cooldownTime>1.55</cooldownTime>
+		  <armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+		  <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+		</li>
+	  </tools>
+	  
+	</ThingDef>
+
+</Defs>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <SitePartDef>
+    <defName>m_Bank</defName>
+    <label>bank</label>
+    <description>A bank with tons of silver inside.</description>
+    <gravShipsCanLandOn>true</gravShipsCanLandOn>
+	
+    <tags Inherit="False">
+      <li>m_Bank</li>
+    </tags>
+	
+    <siteTexture>World/WorldObjects/Sites/Outpost</siteTexture>
+    <expandingIconTexture>World/m_BankIcon</expandingIconTexture>
+    <applyFactionColorToSiteTexture>true</applyFactionColorToSiteTexture>
+	
+    <showFactionInInspectString>true</showFactionInInspectString>
+	
+    <requiresFaction>true</requiresFaction>
+	
+    <approachOrderString>Enter {0}</approachOrderString>
+	<approachingReportString>Entering {0}.</approachingReportString>
+	
+    <arrivedLetter>You’ve arrived at the bank. The area appears quiet.</arrivedLetter>
+	<arrivedLetterDef>NeutralEvent</arrivedLetterDef>
+	
+	<considerEnteringAsAttack>false</considerEnteringAsAttack>
+
+  </SitePartDef>
+
+</Defs>

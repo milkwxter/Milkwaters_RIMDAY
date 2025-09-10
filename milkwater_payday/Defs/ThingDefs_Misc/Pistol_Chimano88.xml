@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+	<ThingDef ParentName="m_BasePistol">
+	  <defName>m_Chimano88_Pistol</defName>
+	  <label>Chimano 88</label>
+	  <description>Common 9mm sidearm of midworld manufacture, valued for its high magazine capacity and dependable function in harsh conditions.</description>
+	  <graphicData>
+		<texPath>Things/Weapons/m_chimano88</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<drawSize>1.2</drawSize>
+	  </graphicData>
+	  <equippedAngleOffset>0</equippedAngleOffset>
+	  
+      <uiIconScale>1.75</uiIconScale>
+
+	  <statBases>
+		<WorkToMake>5000</WorkToMake>
+		<SightsEfficiency>0.7</SightsEfficiency>
+		<ShotSpread>0.19</ShotSpread>
+		<SwayFactor>1.09</SwayFactor>
+		<Bulk>2.2</Bulk>
+		<Mass>1</Mass>
+		<RangedWeapon_Cooldown>0.4</RangedWeapon_Cooldown>
+	  </statBases>
+
+	  <costList>
+		<Steel>35</Steel>
+		<ComponentIndustrial>2</ComponentIndustrial>
+	  </costList>
+
+	  <verbs>
+		<li Class="CombatExtended.VerbPropertiesCE">
+		  <recoilAmount>2.9</recoilAmount>
+		  <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+		  <hasStandardCommand>true</hasStandardCommand>
+		  <defaultProjectile>Bullet_9x19mmPara_FMJ</defaultProjectile>
+		  <burstShotCount>2</burstShotCount>
+		  <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+		  <warmupTime>0.6</warmupTime>
+		  <range>12</range>
+		  <soundCast>Milkwater_Shot_Chimano88</soundCast>
+		  <soundCastTail>GunTail_Light</soundCastTail>
+		  <muzzleFlashScale>7</muzzleFlashScale>
+		</li>
+	  </verbs>
+	  
+	  <comps>
+		<li Class="CombatExtended.CompProperties_AmmoUser">
+		  <magazineSize>17</magazineSize>
+		  <reloadTime>4</reloadTime>
+		  <ammoSet>AmmoSet_9x19mmPara</ammoSet>
+		</li>
+		<li Class="CombatExtended.CompProperties_FireModes">
+		  <aiUseBurstMode>TRUE</aiUseBurstMode>
+		  <aiAimMode>Snapshot</aiAimMode>
+		  <aimedBurstShotCount>2</aimedBurstShotCount>
+		</li>
+	  </comps>
+	  <recipeMaker>
+		<researchPrerequisite>Gunsmithing</researchPrerequisite>
+		<skillRequirements>
+		  <Crafting>4</Crafting>
+		</skillRequirements>
+	  </recipeMaker>
+	  
+	  <modExtensions>
+		<li Class="CombatExtended.GunDrawExtension">
+		  <DrawSize>1.0,1.0</DrawSize>
+		  <DrawOffset>0.16,0.08</DrawOffset>
+		  <CasingOffset>-0.07,0.065</CasingOffset>
+		  <CasingAngleOffset>0</CasingAngleOffset>
+		</li>
+		<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="IssacZhuang.MuzzleFlash">
+		  <def>MF_StandardMuzzleFalshTwo</def>
+		  <drawSize>(1,1)</drawSize>
+		  <offsets><li>(0.35,0.17)</li></offsets>
+		</li>
+	  </modExtensions>
+	</ThingDef>
+
+
+</Defs>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <VEF.Storyteller.QuestChainDef>
+        <defName>m_Bank_QuestChain</defName>
+        <iconPath>UI/QuestChainIcon</iconPath>
+        <label>Bank Heist</label>
+        <description>This quest will have you travel to a bank and heist a ton of silver.</description>
+    </VEF.Storyteller.QuestChainDef>
+
+</Defs>

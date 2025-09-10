@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <QuestScriptDef>
+        <defName>m_Bank_Quest</defName>
+        <autoAccept>True</autoAccept>
+        <questNameRules>
+            <rulesStrings>
+                <li>questName->Bank Heist</li>
+            </rulesStrings>
+        </questNameRules>
+        <questDescriptionRules>
+            <rulesStrings>
+                <li>questDescription->We've intercepted messages about a nearby bank nearby the colony. We could use the silver.</li>
+                </rulesStrings>
+        </questDescriptionRules>
+        <root Class="QuestNode_Sequence">
+			<nodes>
+				<li Class="RIMDAY.QuestNode_Root_MBank" />
+			</nodes>
+		</root>
+        <modExtensions>
+            <li Class="VEF.Storyteller.QuestChainExtension">
+                <questChainDef>m_Bank_QuestChain</questChainDef>
+                <conditionMinDaysSinceStart>20</conditionMinDaysSinceStart>
+                <isRepeatable>false</isRepeatable>
+                <grantAgainOnFailure>True</grantAgainOnFailure>
+                <daysUntilGrantAgainOnFailure>7</daysUntilGrantAgainOnFailure>
+            </li>
+        </modExtensions>
+    </QuestScriptDef>
+</Defs>
