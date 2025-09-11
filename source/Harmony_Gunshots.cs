@@ -56,7 +56,7 @@ namespace RIMDAY
                 if (weapon != null && !weapon.def.HasModExtension<DefModExtension_Suppressed>())
                 {
                     // !TODO: NO ONE CAN HEAR THIS!!!!!
-                    GenClamor.DoClamor(pawn, 12f, RIMDAY_ClamorDefOf.Gunshot);
+                    GenClamor.DoClamor(pawn, 25f, RIMDAY_ClamorDefOf.RIMDAY_Gunshot);
                     Log.Message("UNSUPPRESSED SHOT: Clamor triggered");
                 }
                 else

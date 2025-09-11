@@ -2,8 +2,7 @@
 <Defs>
 
 	<ClamorDef>
-		<defName>Gunshot</defName>
-		<label>gunshot</label>
+		<defName>RIMDAY_Gunshot</defName>
 	</ClamorDef>
 
 </Defs>

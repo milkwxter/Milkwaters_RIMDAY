@@ -80,7 +80,10 @@ namespace RIMDAY
             }
 
             // lord job so pawns guard the room they spawned in
-            Lord guardYourRoomLord = LordMaker.MakeNewLord(room.Map.ParentFaction, new LordJob_DefendBase(room.Map.ParentFaction, room.Cells.RandomElement(), 25000, false), room.Map, pawnsDefendingRoom);
+            if (pawnCount > 0)
+            {
+                Lord guardYourRoomLord = LordMaker.MakeNewLord(room.Map.ParentFaction, new LordJob_DefendBank(room.Map.ParentFaction, room.Cells.RandomElement(), 25000, false), room.Map, pawnsDefendingRoom);
+            }
         }
     }
 }

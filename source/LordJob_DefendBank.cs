@@ -1,6 +1,7 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
 using Verse;
+using Verse.AI;
 using Verse.AI.Group;
 
 namespace RIMDAY
@@ -32,10 +33,10 @@ namespace RIMDAY
             StateGraph stateGraph = new StateGraph();
 
             // defend center of base
-            LordToil_DefendBase lordToil_DefendBase = (LordToil_DefendBase)(stateGraph.StartingToil = new LordToil_DefendBase(baseCenter));
+            LordToil_DefendBankRoom lordToil_DefendBase = (LordToil_DefendBankRoom)(stateGraph.StartingToil = new LordToil_DefendBankRoom(baseCenter));
 
             // continuously defend base
-            LordToil_DefendBase lordToil_DefendBase2 = new LordToil_DefendBase(baseCenter);
+            LordToil_DefendBankRoom lordToil_DefendBase2 = new LordToil_DefendBankRoom(baseCenter);
             stateGraph.AddToil(lordToil_DefendBase2);
 
             // attacking players guys state
@@ -71,7 +72,7 @@ namespace RIMDAY
             // a ability is casted
             transition3.AddTrigger(new Trigger_OnClamor(ClamorDefOf.Ability));
             // a gunshot is heard
-            transition3.AddTrigger(new Trigger_LoudGunshotClamor());
+            transition3.AddTrigger(new Trigger_OnClamor(RIMDAY_ClamorDefOf.RIMDAY_Gunshot));
 
             // wake up sleepers when misc trigger goes off
             transition3.AddPostAction(new TransitionAction_WakeAll());
@@ -96,4 +97,25 @@ namespace RIMDAY
             Scribe_Values.Look(ref delayBeforeAssault, "delayBeforeAssault", 25000);
         }
     }
+
+    public class LordToil_DefendBankRoom : LordToil
+    {
+        public IntVec3 baseCenter;
+
+        public override IntVec3 FlagLoc => baseCenter;
+
+        public LordToil_DefendBankRoom(IntVec3 baseCenter)
+        {
+            this.baseCenter = baseCenter;
+        }
+
+        public override void UpdateAllDuties()
+        {
+            for (int i = 0; i < lord.ownedPawns.Count; i++)
+            {
+                lord.ownedPawns[i].mindState.duty = new PawnDuty(DutyDefOf.Defend, baseCenter);
+            }
+        }
+    }
+
 }

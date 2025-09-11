@@ -1,9 +1,4 @@
 ﻿using RimWorld;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Verse;
 
 namespace RIMDAY
@@ -11,7 +6,7 @@ namespace RIMDAY
     [DefOf]
     public static class RIMDAY_ClamorDefOf
     {
-        public static ClamorDef Gunshot;
+        public static ClamorDef RIMDAY_Gunshot;
 
         static RIMDAY_ClamorDefOf()
         {
@@ -21,6 +16,6 @@ namespace RIMDAY
 
     public class DefModExtension_Suppressed : DefModExtension
     {
-        // LOL
+        // doesnt need to do anything
     }
 }
