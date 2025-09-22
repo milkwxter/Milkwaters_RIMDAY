@@ -5,12 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using Verse;
 using Verse.AI.Group;
+using static Verse.AI.ThingCountTracker;
 
 namespace RIMDAY
 {
     public class GenStep_SpawnMBankLayout : GenStep
     {
         public override int SeedPart => 901238893;
+
+        // create list of pawns to defend that room, immersive
+        List<Pawn> pawnsDefendingBank = new List<Pawn>();
 
         public override void Generate(Map map, GenStepParams parms)
         {
@@ -47,6 +51,17 @@ namespace RIMDAY
                 // spawn simple guards
                 SpawnGuards(room);
             }
+
+            // lord job so pawns guard the room they spawned in
+            if (pawnsDefendingBank.Count > 0)
+            {
+                Lord guardYourRoomLord = LordMaker.MakeNewLord(
+                    map.ParentFaction,
+                    new LordJob_RIMDAYDefendTheBank(map.ParentFaction, center),
+                    map,
+                    pawnsDefendingBank
+                    );
+            }
         }
 
         private void SpawnGuards(Room room)
@@ -54,13 +69,11 @@ namespace RIMDAY
             // set vars
             int roomSize = room.CellCount;
 
-            // create list of pawns to defend that room, immersive
-            List<Pawn> pawnsDefendingRoom = new List<Pawn>();
-
             // spawn pawns according to size of room
             int pawnCount = Math.Min(roomSize / 30, 3);
             for (int i = 0; i < pawnCount; i++)
             {
+                // request a new pawn from the game with params
                 PawnGenerationRequest req = new PawnGenerationRequest(
                     kind: PawnKindDef.Named("Town_Guard"),
                     faction: room.Map.ParentFaction,
@@ -70,19 +83,22 @@ namespace RIMDAY
                     allowDead: false
                 );
 
+                // generate him
                 Pawn pawn = PawnGenerator.GeneratePawn(req);
+
+                // spawn him and add to list for lord use
                 IntVec3 spawnCell = room.Cells.Where(c => c.Standable(room.Map)).InRandomOrder().FirstOrDefault();
                 if (spawnCell != IntVec3.Invalid)
                 {
                     GenSpawn.Spawn(pawn, spawnCell, room.Map);
-                    pawnsDefendingRoom.Add(pawn);
+                    pawnsDefendingBank.Add(pawn);
                 }
-            }
 
-            // lord job so pawns guard the room they spawned in
-            if (pawnCount > 0)
-            {
-                Lord guardYourRoomLord = LordMaker.MakeNewLord(room.Map.ParentFaction, new LordJob_DefendBank(room.Map.ParentFaction, room.Cells.RandomElement(), 25000, false), room.Map, pawnsDefendingRoom);
+                // give him the bank guard comp
+                var comp = new CompBankGuard();
+                comp.parent = pawn;
+                comp.IsBankGuard = true;
+                pawn.AllComps.Add(comp);
             }
         }
     }

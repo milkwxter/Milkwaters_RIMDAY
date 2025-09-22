@@ -12,6 +12,7 @@ namespace RIMDAY
         public string outSignal;
         private bool signalSent;
         private int hostilesActive;
+        private int colonistsActive;
 
         public override void QuestPartTick()
         {
@@ -26,14 +27,17 @@ namespace RIMDAY
             {
                 // check if hostiles are still here
                 hostilesActive = mapToCheck.mapPawns.AllPawnsSpawned.Count(p => !p.DeadOrDowned && p.HostileTo(Faction.OfPlayer));
+
+                // check if player has guys still
+                colonistsActive = mapToCheck.mapPawns.AllPawnsSpawned.Count(p => !p.DeadOrDowned && p.Faction == Faction.OfPlayer);
             }
             else
             {
                 // map is gone
                 signalSent = true;
 
-                // are hostiles still here?
-                if (hostilesActive <= 0)
+                // did we win
+                if (hostilesActive <= 0 && colonistsActive > 0)
                 {
                     quest.End(QuestEndOutcome.Success);
                 }

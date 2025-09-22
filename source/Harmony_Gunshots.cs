@@ -2,15 +2,16 @@
 using RimWorld;
 using System.Reflection;
 using Verse;
+using Verse.AI;
 
 namespace RIMDAY
 {
     [StaticConstructorOnStartup]
-    public static class Patch_GunshotClamorInjector
+    public static class Patch_RIMDAY_GunshotClamorInjector
     {
         public static bool IsCombatExtendedActive => LoadedModManager.RunningModsListForReading.Any(mod => mod.PackageId == "ceteam.combatextended");
 
-        static Patch_GunshotClamorInjector()
+        static Patch_RIMDAY_GunshotClamorInjector()
         {
             var harmony = new Harmony("rimday.patch.gunshot");
 
@@ -24,7 +25,7 @@ namespace RIMDAY
                 if (ceMethod != null)
                 {
                     harmony.Patch(ceMethod,
-                        postfix: new HarmonyMethod(typeof(Patch_GunshotClamorInjector), nameof(Postfix)));
+                        postfix: new HarmonyMethod(typeof(Patch_RIMDAY_GunshotClamorInjector), nameof(Postfix)));
                 }
                 else
                 {
@@ -39,7 +40,7 @@ namespace RIMDAY
                 if (method != null)
                 {
                     harmony.Patch(method,
-                        postfix: new HarmonyMethod(typeof(Patch_GunshotClamorInjector), nameof(Postfix)));
+                        postfix: new HarmonyMethod(typeof(Patch_RIMDAY_GunshotClamorInjector), nameof(Postfix)));
                 }
                 else
                 {
@@ -53,9 +54,13 @@ namespace RIMDAY
             if (__instance.Caster is Pawn pawn)
             {
                 ThingWithComps weapon = pawn.equipment?.Primary;
-                if (weapon != null && !weapon.def.HasModExtension<DefModExtension_Suppressed>())
+
+                // null check
+                if (weapon == null) return;
+
+                // see if the weapon has the suppressed tag
+                if (!weapon.def.HasModExtension<DefModExtension_Suppressed>())
                 {
-                    // !TODO: NO ONE CAN HEAR THIS!!!!!
                     GenClamor.DoClamor(pawn, 25f, RIMDAY_ClamorDefOf.RIMDAY_Gunshot);
                     Log.Message("UNSUPPRESSED SHOT: Clamor triggered");
                 }
@@ -63,6 +68,27 @@ namespace RIMDAY
                 {
                     Log.Message("SUPPRESSED SHOT: No clamor");
                 }
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(Pawn), nameof(Pawn.HearClamor))]
+    public static class Patch_RIMDAY_HearClamorInjector
+    {
+        static void Postfix(Pawn __instance, Thing source, ClamorDef type)
+        {
+            // finally... a custom clamor
+            if (type == RIMDAY_ClamorDefOf.RIMDAY_Gunshot)
+            {
+                // stop sleeping
+                if (__instance.CurJob != null && !__instance.Awake())
+                {
+                    __instance.jobs.EndCurrentJob(JobCondition.InterruptForced);
+                }
+
+                // why is this method private
+                MethodInfo notifyMethod = AccessTools.Method(typeof(Pawn), "NotifyLordOfClamor");
+                notifyMethod.Invoke(__instance, new object[] { source, type });
             }
         }
     }
