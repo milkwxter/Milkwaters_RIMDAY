@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
         
-  <!-- AK.762 -->
+  <!-- AMCAR Suppressed -->
   <ThingDef ParentName="m_BaseSMG">
-    <defName>m_AK762_AR</defName>
-    <label>AK.762</label>
-    <description>Durable 7.62mm battle rifle of midworld origin, valued by pirates and frontier militias for its raw power despite heavy recoil.</description>
+    <defName>m_AMCAR_S_AR</defName>
+    <label>suppressed AMCAR</label>
+    <description>Midworld-pattern carbine once issued under Imperial charter, now favored by pirates and frontier militias for its rugged, low‑maintenance design. Suppressed variant.</description>
 	<graphicData>
-      <texPath>Things/Weapons/m_ak762</texPath>
+      <texPath>Things/Weapons/m_amcar_s</texPath>
       <graphicClass>Graphic_Single</graphicClass>
 	  <drawSize>1.2</drawSize>
     </graphicData>
@@ -16,29 +16,30 @@
     <statBases>
 	  <WorkToMake>40000</WorkToMake>
 	  <SightsEfficiency>1</SightsEfficiency>
-	  <ShotSpread>0.09</ShotSpread>
-	  <SwayFactor>1.37</SwayFactor>
-	  <Bulk>9</Bulk>
-	  <Mass>2.5</Mass>
-	  <RangedWeapon_Cooldown>0.37</RangedWeapon_Cooldown>
+	  <ShotSpread>0.1</ShotSpread>
+	  <SwayFactor>1.4</SwayFactor>
+	  <Bulk>10</Bulk>
+	  <Mass>3.00</Mass>
+	  <RangedWeapon_Cooldown>0.34</RangedWeapon_Cooldown>
 	</statBases>
 
     <costList>
-      <Steel>60</Steel>
+      <Steel>50</Steel>
       <ComponentIndustrial>7</ComponentIndustrial>
+      <ComponentSpacer>1</ComponentSpacer>
     </costList>
 	
     <verbs>
 	  <li Class="CombatExtended.VerbPropertiesCE">
-		<recoilAmount>1.9</recoilAmount>
+		<recoilAmount>1.6</recoilAmount>
 		<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 		<hasStandardCommand>true</hasStandardCommand>
-		<defaultProjectile>Bullet_762x39mmSoviet_FMJ</defaultProjectile>
+		<defaultProjectile>Bullet_556x45mmNATO_FMJ</defaultProjectile>
 		<burstShotCount>3</burstShotCount>
-		<ticksBetweenBurstShots>9</ticksBetweenBurstShots>
+		<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
 		<warmupTime>1.1</warmupTime>
 		<range>45</range>
-		<soundCast>Milkwater_Shot_AK762</soundCast>
+		<soundCast>Milkwater_Shot_AMCAR_Suppressed</soundCast>
 		<soundCastTail>GunTail_Heavy</soundCastTail>
 		<muzzleFlashScale>12</muzzleFlashScale>
 	  </li>
@@ -46,9 +47,9 @@
 	
     <comps>
       <li Class="CombatExtended.CompProperties_AmmoUser">
-        <magazineSize>30</magazineSize>
+        <magazineSize>20</magazineSize>
         <reloadTime>4</reloadTime>
-        <ammoSet>AmmoSet_762x39mmSoviet</ammoSet>
+        <ammoSet>AmmoSet_556x45mmNATO</ammoSet>
       </li>
       <li Class="CombatExtended.CompProperties_FireModes">
         <aiUseBurstMode>FALSE</aiUseBurstMode>
@@ -59,11 +60,15 @@
     <recipeMaker>
       <researchPrerequisite>Gunsmithing</researchPrerequisite>
 	  <skillRequirements>
-	    <Crafting>6</Crafting>
+	    <Crafting>5</Crafting>
 	  </skillRequirements>
     </recipeMaker>
     
     <modExtensions>
+	
+		<!-- Testing -->
+		<li Class="RIMDAY.DefModExtension_Suppressed" />
+		
       <li Class="CombatExtended.GunDrawExtension">
         <DrawSize>1.0,1.0</DrawSize>
         <DrawOffset>0.1,0.0</DrawOffset>
@@ -72,7 +77,7 @@
       </li>
 	  <li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="IssacZhuang.MuzzleFlash">
 		<def>MF_StandardMuzzleFalshTwo</def>
-		<drawSize>(1,1)</drawSize>
+		<drawSize>(0.5,0.5)</drawSize>
 		<offsets>
 			<li>(0.65,0.11)</li>
 		</offsets>

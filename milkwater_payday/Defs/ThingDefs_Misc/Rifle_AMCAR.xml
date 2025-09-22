@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
         
-  <!-- Gepard PDW -->
+  <!-- AMCAR -->
   <ThingDef ParentName="m_BaseSMG">
     <defName>m_AMCAR_AR</defName>
     <label>AMCAR</label>
@@ -64,10 +64,6 @@
     </recipeMaker>
     
     <modExtensions>
-	
-		<!-- Testing -->
-		<li Class="RIMDAY.DefModExtension_Suppressed" />
-		
       <li Class="CombatExtended.GunDrawExtension">
         <DrawSize>1.0,1.0</DrawSize>
         <DrawOffset>0.1,0.0</DrawOffset>
