@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+	<JobDef>
+	  <defName>DrillVaultDoor</defName>
+	  <driverClass>RIMDAY.JobDriver_UseDrill</driverClass>
+	  <reportString>Drilling a vault door.</reportString>
+	</JobDef>
+
+</Defs>

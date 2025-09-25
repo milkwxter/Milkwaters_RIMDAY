@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <SoundDef>
+    <defName>m_DrillSustainer</defName>
+    <context>MapOnly</context>
+    <sustain>true</sustain>
+    <maxVoices>1</maxVoices>
+    <priorityMode>PrioritizeNearest</priorityMode>
+    <subSounds> 
+      <li>
+        <muteWhenPaused>True</muteWhenPaused> 
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Drill/drilling</clipPath>
+          </li>
+        </grains>
+        <volumeRange>0.8~1.0</volumeRange>
+        <distRange>1~30</distRange>
+        <sustainLoop>false</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+</Defs>

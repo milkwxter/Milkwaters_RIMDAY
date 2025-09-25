@@ -15,6 +15,17 @@ namespace RIMDAY
         }
     }
 
+    [DefOf]
+    public static class RIMDAY_JobDefOf
+    {
+        public static JobDef DrillVaultDoor;
+
+        static RIMDAY_JobDefOf()
+        {
+            DefOfHelper.EnsureInitializedInCtor(typeof(RIMDAY_JobDefOf));
+        }
+    }
+
     public class DefModExtension_Suppressed : DefModExtension
     {
         // doesnt need to do anything

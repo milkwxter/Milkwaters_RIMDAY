@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <!-- ================================ Vault Door ====================== -->
+	<ThingDef ParentName="DoorBase">
+		<defName>m_DoorVault</defName>
+		<label>vault door</label>
+		<description>A slow moving door that separates two rooms.</description>
+		<graphicData>
+			<texPath>Things/Building/VaultDoor/DoorVault_Mover</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<damageData>
+				<enabled>false</enabled>
+			</damageData>
+		</graphicData>
+		<statBases>
+			<WorkToBuild>20000</WorkToBuild>
+			<MaxHitPoints>15000</MaxHitPoints>
+			<DoorOpenSpeed>0.5</DoorOpenSpeed>
+		</statBases>
+		<uiIconPath>Things/Building/VaultDoor/DoorVault_MenuIcon</uiIconPath>
+		<building>
+			<paintable>true</paintable>
+			<isStuffableAirtight>false</isStuffableAirtight>
+		</building>
+		<stuffCategories Inherit="False">
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>400</costStuffCount>
+		<researchPrerequisites>
+			<li>Smithing</li>
+		</researchPrerequisites>
+		
+		<thingClass>RIMDAY.Building_VaultDoor</thingClass>
+	</ThingDef>
+
+</Defs>
